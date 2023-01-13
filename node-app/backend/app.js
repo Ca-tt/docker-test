@@ -15,10 +15,11 @@ liveReloadServer.server.once("connection", () => {
 });
 
 app.use(connectLiveReload());
+app.use(express.urlencoded({ extended: true }))
 
 app.use(indexRoute);
 
-app.set('views', './../vite-project/views');
+app.set('views', './views');
 app.set('view engine', 'pug');
 
 app.listen(port, () => {

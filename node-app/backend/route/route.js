@@ -3,10 +3,30 @@ import fs from 'node:fs';
 
 let router = express.Router();
 
+let usersFile = './data/users.txt';
+
 // index route
 router.get('/', (req, res) => {
-  res.render('index', { content: `page res is ${res.statusCode}` });
+  
+  fs.readFile(usersFile, 'utf-8', (err, data) => {
+    let users = [];
+    users = data.split('\r\n');
+    res.render('index', { content: `page res is ${res.statusCode}`, users: users });
+  })
 })
+
+router.post('/', (req, res) => {
+  let newUser = req.body.text;
+  // console.log('req: ', newUser);
+  
+  fs.readFile(usersFile, 'utf-8', (err, data) => {
+    fs.appendFile(usersFile, `\r\n${newUser}`, (err) => {
+
+    })
+  })
+  res.redirect('/')
+})
+
 
 // get file
 router.get('/file', (req, res) => {

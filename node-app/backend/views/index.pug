@@ -1,0 +1,33 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Document
+
+    style.
+      li {
+        font-size: 1.4em;
+      }
+      input {
+        font-size: 1.2em;
+        border: none;
+        outline: none;
+        padding: .5em .25em;
+        text-indent: .5em;
+      }
+
+  body
+
+    h1.title User List 
+
+    form(action="/" method="POST") 
+      p 
+        input(type="text" name="text" placeholder="Type new user name here")
+      p 
+        button(type="submit") Add new user
+
+    ul
+      each user in users
+        li= user
